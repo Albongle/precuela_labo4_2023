@@ -1,0 +1,52 @@
+<input
+  type="button"
+  class="btn btn-outline-primary"
+  value="Cambiar vista"
+  (click)="cambiarVista()"
+/>
+<div *ngIf="alternarVista; then thenBlock; else elseBlock"></div>
+
+<ng-template #thenBlock
+  ><ul>
+    <li class="mt-5" *ngFor="let elemento of elementosAListar">
+      <ul>
+        <li type="circle" *ngFor="let key of elemento | ObjKeysToArray">
+          {{ key }}: {{ elemento[key] }}
+        </li>
+        <input
+          type="button"
+          class="btn btn-outline-success"
+          value="detalle"
+          (click)="seleccionarItem(elemento)"
+        />
+      </ul>
+    </li></ul
+></ng-template>
+
+<ng-template #elseBlock>
+  <table class="table">
+    <thead>
+      <tr>
+        <th *ngFor="let key of elementosAListar[0] | ObjKeysToArray">
+          {{ key }}
+        </th>
+        <th>Accion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let elemento of elementosAListar">
+        <td *ngFor="let key of elemento | ObjKeysToArray">
+          {{ elemento[key] }}
+        </td>
+        <td>
+          <input
+            type="button"
+            class="btn btn-outline-success"
+            value="detalle"
+            (click)="seleccionarItem(elemento)"
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-template>
