@@ -11,8 +11,12 @@ import {
 })
 export class ListadoPeliculasComponent {
   protected listadoPeliculas: Array<Pelicula>;
-
+  public itemSeleccionado: any;
   constructor() {
     this.listadoPeliculas = listadoDePeliculas;
+  }
+
+  public handlerDetalleItem($event: Event) {
+    this.itemSeleccionado = $event;
   }
 }

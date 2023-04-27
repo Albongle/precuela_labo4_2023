@@ -10,7 +10,7 @@ import {
   styleUrls: ['./peliculas.component.scss'],
 })
 export class PeliculasComponent {
-  protected listadoPeliculas: Array<Pelicula>;
+  public listadoPeliculas: Array<Pelicula>;
 
   constructor() {
     this.listadoPeliculas = listadoDePeliculas;

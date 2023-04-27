@@ -1,1 +1,4 @@
-<app-listado [elementosAListar]="listadoPeliculas"></app-listado>
+<app-listado
+  [elementosAListar]="listadoPeliculas"
+  (eventDetallarItem)="handlerDetalleItem($event)"
+></app-listado>

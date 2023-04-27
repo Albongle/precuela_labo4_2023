@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ListadoComponent {
   @Input() public elementosAListar: Array<any>;
   protected alternarVista: boolean;
+  @Input() public activarDetalle: boolean;
   @Output() public eventDetallarItem: EventEmitter<any>;
 
   constructor() {
