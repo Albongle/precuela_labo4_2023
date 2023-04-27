@@ -1,7 +1,28 @@
 <p>tabla-paises works!</p>
-<app-listado
-  *ngIf="listadoPaises"
-  [elementosAListar]="listadoPaises"
-  [activarDetalle]="true"
-  (eventDetallarItem)="handlerPais($event)"
-></app-listado>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th *ngFor="let key of listadoPaises[0] | ObjKeysToArray">
+        {{ key }}
+      </th>
+      <th *ngIf="activarDetalle">Accion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let elemento of listadoPaises">
+      <td *ngFor="let key of elemento | ObjKeysToArray">
+        {{ elemento[key] }}
+      </td>
+      <td>
+        <input
+          *ngIf="activarDetalle"
+          type="button"
+          class="btn btn-outline-success"
+          value="detalle"
+          (click)="seleccionarPais(elemento)"
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>

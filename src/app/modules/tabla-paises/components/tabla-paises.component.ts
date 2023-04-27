@@ -9,8 +9,9 @@ import { map } from 'rxjs';
 })
 export class TablaPaisesComponent {
   protected listadoPaises: Array<any>;
-
   @Output() public paisSeleccionado: EventEmitter<any>;
+  @Input() public activarDetalle: boolean;
+
   constructor(private readonly httpClient: HttpClient) {
     this.getPaises().subscribe((p) => (this.listadoPaises = p));
     this.paisSeleccionado = new EventEmitter();
@@ -36,7 +37,7 @@ export class TablaPaisesComponent {
       );
   }
 
-  public handlerPais($event: Event) {
-    this.paisSeleccionado.emit($event);
+  public seleccionarPais(item: any) {
+    this.paisSeleccionado.emit(item);
   }
 }

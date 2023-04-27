@@ -6,9 +6,9 @@ import { Component, Input, Output } from '@angular/core';
   styleUrls: ['./alta-actores.component.scss'],
 })
 export class AltaActoresComponent {
-  public pais: any;
-  public handlerPais($event: Event) {
-    console.log('en alta', $event);
-    this.pais = $event;
-  }
+  // public pais: any;
+  // public handlerPais($event: Event) {
+  //   console.log('en alta', $event);
+  //   this.pais = $event;
+  // }
 }
