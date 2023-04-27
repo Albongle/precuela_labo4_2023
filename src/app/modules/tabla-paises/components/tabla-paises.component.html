@@ -1,0 +1,7 @@
+<p>tabla-paises works!</p>
+<app-listado
+  *ngIf="listadoPaises"
+  [elementosAListar]="listadoPaises"
+  [activarDetalle]="true"
+  (eventDetallarItem)="handlerPais($event)"
+></app-listado>

@@ -21,6 +21,11 @@ const routes: Routes = [
         (m) => m.BienvenidoModule
       ),
   },
+  {
+    path: 'actores',
+    loadChildren: () =>
+      import('./pages/actores/actores.module').then((m) => m.ActoresModule),
+  },
 ];
 
 @NgModule({
