@@ -9,6 +9,8 @@ import { ListadoComponent } from './components/listado/listado.component';
 import { PeliculasComponent } from './pages/peliculas/peliculas.component';
 import { ObjKeysToArrayPipe } from 'src/pipes/objKeysToArray.pipe';
 import { DetalleComponent } from './components/detalle/detalle.component';
+import { ListadoPeliculasComponent } from './pages/peliculas/components/listado-peliculas/listado-peliculas.component';
+import { AltaPeliculasComponent } from './pages/peliculas/components/alta-peliculas/alta-peliculas.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { DetalleComponent } from './components/detalle/detalle.component';
     PeliculasComponent,
     ObjKeysToArrayPipe,
     DetalleComponent,
+    ListadoPeliculasComponent,
+    AltaPeliculasComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
