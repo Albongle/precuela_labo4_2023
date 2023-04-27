@@ -5,7 +5,6 @@ import { ActoresComponent } from './actores.component';
 import { AltaActoresComponent } from './components/alta-actores/alta-actores.component';
 import { TablaPaisesModule } from '../../../app/modules/tabla-paises/tabla-paises.module';
 import { ListadoModule } from '../../../app/modules/listado/listado.module';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [ActoresComponent, AltaActoresComponent],
@@ -13,7 +12,6 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     ActoresRoutingModule,
     TablaPaisesModule,
-    HttpClientModule,
     ListadoModule,
   ],
 })
