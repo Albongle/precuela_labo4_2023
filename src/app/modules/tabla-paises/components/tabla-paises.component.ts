@@ -10,7 +10,7 @@ import { map } from 'rxjs';
 export class TablaPaisesComponent {
   protected listadoPaises: Array<any>;
   @Output() public paisSeleccionado: EventEmitter<any>;
-  @Input() public activarDetalle: boolean;
+  @Input() public activarSeleccion: boolean;
 
   constructor(private readonly httpClient: HttpClient) {
     this.getPaises().subscribe((p) => (this.listadoPaises = p));

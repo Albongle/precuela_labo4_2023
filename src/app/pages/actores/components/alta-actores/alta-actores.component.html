@@ -1,5 +1,7 @@
 <p>alta-actores works!</p>
-<!-- <app-tabla-paises (paisSeleccionado)="handlerPais($event)"></app-tabla-paises> -->
-
-<app-tabla-paises></app-tabla-paises>
-<!-- <div *ngIf="pais"><app-detalle [itemADetallar]="pais"></app-detalle></div> -->
+<div class="row justify-content-end">
+  <app-tabla-paises
+    [ngClass]="'col-8'"
+    [activarSeleccion]="true"
+  ></app-tabla-paises>
+</div>
