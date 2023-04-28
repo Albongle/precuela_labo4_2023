@@ -15,13 +15,20 @@ export class ListadoComponent {
   };
   @Output() public eventEnviarElemento: EventEmitter<any>;
   protected alternarVista: boolean;
+  private static modosVista = ['Ver como tabla', 'Ver como lista'];
 
   constructor() {
     this.eventEnviarElemento = new EventEmitter();
+    this.verComo = ListadoComponent.modosVista[1];
   }
 
   public cambiarVista() {
     this.alternarVista = !this.alternarVista;
+    this.verComo =
+      ListadoComponent.modosVista[
+        (ListadoComponent.modosVista.indexOf(this.verComo) + 1) %
+          ListadoComponent.modosVista.length
+      ];
   }
 
   public seleccionarItem(item: any) {
