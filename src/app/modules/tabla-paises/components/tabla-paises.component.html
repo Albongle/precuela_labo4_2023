@@ -11,12 +11,17 @@
   </thead>
   <tbody>
     <tr *ngFor="let elemento of listadoPaises">
-      <td *ngFor="let item of elemento | keyvalue">
-        {{ item.value }}
+      <td [ngClass]="''" *ngFor="let item of elemento | keyvalue">
+        <img
+          *ngIf="item.key === 'bandera'; else elseBlock"
+          [ngStyle]="{ width: '32px' }"
+          [src]="item.value"
+          alt=""
+        />
+        <ng-template #elseBlock>{{ item.value }}</ng-template>
       </td>
-      <td>
+      <td *ngIf="activarDetalle">
         <input
-          *ngIf="activarDetalle"
           type="button"
           class="btn btn-outline-success"
           value="detalle"

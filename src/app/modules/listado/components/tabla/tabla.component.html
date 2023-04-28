@@ -12,9 +12,8 @@
       <td *ngFor="let item of elemento | keyvalue">
         {{ item.value }}
       </td>
-      <td>
+      <td *ngIf="habilitarDetalle">
         <input
-          *ngIf="habilitarDetalle"
           type="button"
           class="btn btn-outline-success"
           value="detalle"
