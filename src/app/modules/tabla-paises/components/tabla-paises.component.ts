@@ -10,11 +10,16 @@ import { map } from 'rxjs';
 export class TablaPaisesComponent {
   protected listadoPaises: Array<any>;
   @Output() public paisSeleccionado: EventEmitter<any>;
+  @Output() public todosLosPaises: EventEmitter<any>;
   @Input() public activarSeleccion: boolean;
 
   constructor(private readonly httpClient: HttpClient) {
-    this.getPaises().subscribe((p) => (this.listadoPaises = p));
     this.paisSeleccionado = new EventEmitter();
+    this.todosLosPaises = new EventEmitter();
+    this.getPaises().subscribe((p) => {
+      this.listadoPaises = p;
+      this.todosLosPaises.emit(p);
+    });
   }
 
   private getPaises() {
@@ -24,12 +29,12 @@ export class TablaPaisesComponent {
         map((data: any) => {
           return Array.from(data).map((p: any) => {
             const pais = {
-              bandera: p.flags.svg,
-              continente: p.continents.shift(),
-              capital: p.capital.shift(),
               nombre: p.name.common,
-              region: p.region,
-              subRegion: p.subregion,
+              bandera: p.flags.svg,
+              capital: p.capital.shift(),
+              // continente: p.continents.shift(),
+              // region: p.region,
+              // subRegion: p.subregion,
             };
             return pais;
           });

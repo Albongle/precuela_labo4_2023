@@ -1,7 +1,7 @@
-<div [ngClass]="'container-fluid'">
-  <div [ngClass]="'row justify-content-center'">
+<div [ngClass]="'container'">
+  <div [ngClass]="'row justify-content-center w-auto'">
     <div [ngClass]="'col'">
-      <table [ngClass]="'table table-borderer'">
+      <table *ngIf="listadoPaises" [ngClass]="'table table-borderer'">
         <thead>
           <tr>
             <th
