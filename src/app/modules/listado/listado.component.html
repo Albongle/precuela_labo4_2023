@@ -2,9 +2,10 @@
   *ngIf="config.habilitarAlternarVista"
   type="button"
   class="btn btn-outline-primary"
-  [value]="verComo"
+  [value]="'Ver como ' + siguienteVista"
   (click)="cambiarVista()"
 />
+
 <div *ngIf="alternarVista; then thenBlock; else elseBlock"></div>
 
 <ng-template #thenBlock>

@@ -31,7 +31,11 @@
       <app-listado
         [listaDeElementos]="elementos"
         (eventEnviarElemento)="handlerDetalleItem($event)"
-        [config]="{ habilitarDetalle: true, habilitarAlternarVista: true }"
+        [config]="{
+          habilitarDetalle: true,
+          habilitarAlternarVista: true,
+          verComo: 'tabla'
+        }"
       ></app-listado>
     </div>
   </div>

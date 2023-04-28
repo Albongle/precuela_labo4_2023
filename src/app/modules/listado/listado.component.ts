@@ -1,5 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
+enum ModoVista {
+  TABLA = 'tabla',
+  LISTA = 'lista',
+}
 @Component({
   selector: 'app-listado',
   templateUrl: './listado.component.html',
@@ -7,26 +11,33 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ListadoComponent {
   @Input() public listaDeElementos: Array<any>;
-  @Input() public verComo: string;
   @Input() public config: {
-    habilitarAlternarVista: boolean;
+    habilitarAlternarVista?: boolean;
     habilitarDetalle?: boolean;
-    verComo?: string;
+    verComo?: 'tabla' | 'lista';
   };
   @Output() public eventEnviarElemento: EventEmitter<any>;
   protected alternarVista: boolean;
-  private static modosVista = ['Ver como tabla', 'Ver como lista'];
+  protected siguienteVista: ModoVista;
+  private static modosVista = [ModoVista.TABLA, ModoVista.LISTA];
 
   constructor() {
     this.eventEnviarElemento = new EventEmitter();
-    this.verComo = ListadoComponent.modosVista[1];
+  }
+  ngOnInit() {
+    this.siguienteVista =
+      this.config && this.config.verComo === 'lista'
+        ? ModoVista.TABLA
+        : ModoVista.LISTA;
+    this.alternarVista = this.config && this.config.verComo === 'lista';
   }
 
   public cambiarVista() {
     this.alternarVista = !this.alternarVista;
-    this.verComo =
+
+    this.siguienteVista =
       ListadoComponent.modosVista[
-        (ListadoComponent.modosVista.indexOf(this.verComo) + 1) %
+        (ListadoComponent.modosVista.indexOf(this.siguienteVista) + 1) %
           ListadoComponent.modosVista.length
       ];
   }
