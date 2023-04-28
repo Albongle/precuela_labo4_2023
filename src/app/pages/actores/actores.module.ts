@@ -5,6 +5,7 @@ import { ActoresComponent } from './actores.component';
 import { AltaActoresComponent } from './components/alta-actores/alta-actores.component';
 import { TablaPaisesModule } from '../../../app/modules/tabla-paises/tabla-paises.module';
 import { ListadoModule } from '../../../app/modules/listado/listado.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ActoresComponent, AltaActoresComponent],
@@ -13,6 +14,7 @@ import { ListadoModule } from '../../../app/modules/listado/listado.module';
     ActoresRoutingModule,
     TablaPaisesModule,
     ListadoModule,
+    FormsModule,
   ],
 })
 export class ActoresModule {}

@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-alta-actores',
@@ -7,9 +7,27 @@ import { Component, Input, Output } from '@angular/core';
 })
 export class AltaActoresComponent {
   public pais: any;
+  public validar: string;
+  public actor: {
+    nombre?: string;
+    apellido?: string;
+    usuario?: string;
+    email?: string;
+    direccion?: string;
+    pais?: any;
+  };
+
+  constructor() {
+    this.validar = 'invalid-feedback';
+    this.actor = {};
+  }
 
   public handlerPais($event: Event) {
-    console.log('pais seleccionado', $event);
     this.pais = $event;
+    this.actor.pais = this.pais;
+  }
+
+  public cargar() {
+    console.log(this.actor);
   }
 }

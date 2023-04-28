@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './actores.component.html',
   styleUrls: ['./actores.component.scss'],
 })
-export class ActoresComponent {
-  public pais: any;
-}
+export class ActoresComponent {}
