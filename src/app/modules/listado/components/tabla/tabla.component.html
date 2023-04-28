@@ -1,4 +1,4 @@
-<table class="table">
+<table [ngClass]="'table'">
   <thead>
     <tr>
       <th *ngFor="let item of listaDeElementos[0] | keyvalue">
@@ -15,7 +15,7 @@
       <td *ngIf="habilitarDetalle">
         <input
           type="button"
-          class="btn btn-outline-success"
+          [ngClass]="'btn btn-outline-success'"
           value="detalle"
           (click)="seleccionarItem(elemento)"
         />
