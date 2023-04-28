@@ -1,26 +1,24 @@
-<p>tabla-paises works!</p>
-
 <table class="table">
   <thead>
     <tr>
-      <th *ngFor="let item of listadoPaises[0] | keyvalue">
+      <th *ngFor="let item of listaDeElementos[0] | keyvalue">
         {{ item.key }}
       </th>
-      <th *ngIf="activarDetalle">Accion</th>
+      <th *ngIf="habilitarDetalle">Accion</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let elemento of listadoPaises">
+    <tr *ngFor="let elemento of listaDeElementos">
       <td *ngFor="let item of elemento | keyvalue">
         {{ item.value }}
       </td>
       <td>
         <input
-          *ngIf="activarDetalle"
+          *ngIf="habilitarDetalle"
           type="button"
           class="btn btn-outline-success"
           value="detalle"
-          (click)="seleccionarPais(elemento)"
+          (click)="seleccionarItem(elemento)"
         />
       </td>
     </tr>

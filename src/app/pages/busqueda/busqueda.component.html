@@ -29,9 +29,9 @@
       <h1 class="display-5 fw-bold">Listado de Elementos</h1>
       <p class="col-md-8 fs-4">aca va el listado</p>
       <app-listado
-        [elementosAListar]="elementos"
-        (eventDetallarItem)="handlerDetalleItem($event)"
-        [activarDetalle]="true"
+        [listaDeElementos]="elementos"
+        (eventEnviarElemento)="handlerDetalleItem($event)"
+        [config]="{ habilitarDetalle: true, habilitarAlternarVista: true }"
       ></app-listado>
     </div>
   </div>

@@ -1,0 +1,16 @@
+<ul>
+  <li class="mt-5" *ngFor="let elemento of listaDeElementos">
+    <ul>
+      <li type="circle" *ngFor="let item of elemento | keyvalue">
+        {{ item.key }}: {{ item.value }}
+      </li>
+      <input
+        *ngIf="habilitarDetalle"
+        type="button"
+        class="btn btn-outline-success"
+        value="detalle"
+        (click)="seleccionarItem(elemento)"
+      />
+    </ul>
+  </li>
+</ul>

@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListadoComponent } from './listado.component';
-import { DetalleComponent } from './components/detalle/detalle.component';
-import { GetKeysFromObject } from '../keys-from-object/keys-from-object.module';
+import { TablaComponent } from './components/tabla/tabla.component';
+import { ListaComponent } from './components/lista/lista.component';
 
 @NgModule({
-  declarations: [ListadoComponent, DetalleComponent],
-  imports: [CommonModule, GetKeysFromObject],
-  exports: [ListadoComponent, DetalleComponent],
+  declarations: [ListadoComponent, TablaComponent, ListaComponent],
+  imports: [CommonModule],
+  exports: [ListadoComponent],
 })
 export class ListadoModule {}

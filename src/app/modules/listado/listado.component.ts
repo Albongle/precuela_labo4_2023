@@ -6,14 +6,18 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./listado.component.scss'],
 })
 export class ListadoComponent {
-  @Input() public elementosAListar: Array<any>;
+  @Input() public listaDeElementos: Array<any>;
+  @Input() public verComo: string;
+  @Input() public config: {
+    habilitarAlternarVista: boolean;
+    habilitarDetalle?: boolean;
+    verComo?: string;
+  };
+  @Output() public eventEnviarElemento: EventEmitter<any>;
   protected alternarVista: boolean;
-  @Input() public activarDetalle: boolean;
-  @Output() public eventDetallarItem: EventEmitter<any>;
 
   constructor() {
-    this.alternarVista = false;
-    this.eventDetallarItem = new EventEmitter();
+    this.eventEnviarElemento = new EventEmitter();
   }
 
   public cambiarVista() {
@@ -21,6 +25,6 @@ export class ListadoComponent {
   }
 
   public seleccionarItem(item: any) {
-    this.eventDetallarItem.emit(item);
+    this.eventEnviarElemento.emit(item);
   }
 }

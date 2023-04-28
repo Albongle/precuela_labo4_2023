@@ -1,4 +1,5 @@
 <input
+  *ngIf="config.habilitarAlternarVista"
   type="button"
   class="btn btn-outline-primary"
   value="Cambiar vista"
@@ -6,49 +7,18 @@
 />
 <div *ngIf="alternarVista; then thenBlock; else elseBlock"></div>
 
-<ng-template #thenBlock
-  ><ul>
-    <li class="mt-5" *ngFor="let elemento of elementosAListar">
-      <ul>
-        <li type="circle" *ngFor="let key of elemento | ObjKeysToArray">
-          {{ key }}: {{ elemento[key] }}
-        </li>
-        <input
-          *ngIf="activarDetalle"
-          type="button"
-          class="btn btn-outline-success"
-          value="detalle"
-          (click)="seleccionarItem(elemento)"
-        />
-      </ul>
-    </li></ul
+<ng-template #thenBlock>
+  <app-lista
+    [listaDeElementos]="listaDeElementos"
+    [habilitarDetalle]="config.habilitarDetalle"
+    (eventEnviarElemento)="seleccionarItem($event)"
+  ></app-lista
 ></ng-template>
 
 <ng-template #elseBlock>
-  <table class="table">
-    <thead>
-      <tr>
-        <th *ngFor="let key of elementosAListar[0] | ObjKeysToArray">
-          {{ key }}
-        </th>
-        <th *ngIf="activarDetalle">Accion</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let elemento of elementosAListar">
-        <td *ngFor="let key of elemento | ObjKeysToArray">
-          {{ elemento[key] }}
-        </td>
-        <td>
-          <input
-            *ngIf="activarDetalle"
-            type="button"
-            class="btn btn-outline-success"
-            value="detalle"
-            (click)="seleccionarItem(elemento)"
-          />
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <app-tabla
+    [listaDeElementos]="listaDeElementos"
+    [habilitarDetalle]="config.habilitarDetalle"
+    (eventEnviarElemento)="seleccionarItem($event)"
+  ></app-tabla>
 </ng-template>

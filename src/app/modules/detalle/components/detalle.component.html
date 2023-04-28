@@ -1,0 +1,5 @@
+<ul *ngIf="itemADetallar">
+  <li *ngFor="let item of itemADetallar | keyvalue">
+    {{ item.key }}: {{ item.value }}
+  </li>
+</ul>
