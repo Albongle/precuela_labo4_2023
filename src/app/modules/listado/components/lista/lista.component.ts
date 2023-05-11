@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ListaComponent {
   @Input() public listaDeElementos: Array<any>;
   @Input() public habilitarDetalle: boolean | undefined;
+  @Input() public nombreDetalle: string | undefined;
   @Output() public eventEnviarElemento: EventEmitter<any>;
 
   constructor() {

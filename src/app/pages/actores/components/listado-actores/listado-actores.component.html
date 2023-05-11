@@ -1,0 +1,11 @@
+<p class="text-center">Listado de Actores</p>
+
+<app-listado
+  [listaDeElementos]="listadoDeActores"
+  [config]="{
+    habilitarDetalle: true,
+    verComo: 'tabla',
+    nombreDetalle: 'Elegir'
+  }"
+  (eventEnviarElemento)="handlerDetalleItem($event)"
+></app-listado>

@@ -12,6 +12,7 @@
   <app-lista
     [listaDeElementos]="listaDeElementos"
     [habilitarDetalle]="config.habilitarDetalle"
+    [nombreDetalle]="config.nombreDetalle"
     (eventEnviarElemento)="seleccionarItem($event)"
   ></app-lista
 ></ng-template>
@@ -19,6 +20,7 @@
 <ng-template #elseBlock>
   <app-tabla
     [listaDeElementos]="listaDeElementos"
+    [nombreDetalle]="config.nombreDetalle"
     [habilitarDetalle]="config.habilitarDetalle"
     (eventEnviarElemento)="seleccionarItem($event)"
   ></app-tabla>

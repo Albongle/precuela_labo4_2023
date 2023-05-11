@@ -1,4 +1,10 @@
+<p class="text-center">Listado de Peliculas</p>
 <app-listado
   [listaDeElementos]="listadoPeliculas"
+  [config]="{
+    habilitarDetalle: true,
+    habilitarAlternarVista: false,
+    verComo: 'tabla'
+  }"
   (eventEnviarElemento)="handlerDetalleItem($event)"
 ></app-listado>

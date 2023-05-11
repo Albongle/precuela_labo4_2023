@@ -15,6 +15,7 @@ export class ListadoComponent {
     habilitarAlternarVista?: boolean;
     habilitarDetalle?: boolean;
     verComo?: 'tabla' | 'lista';
+    nombreDetalle?: string;
   };
   @Output() public eventEnviarElemento: EventEmitter<any>;
   protected alternarVista: boolean;

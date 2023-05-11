@@ -4,7 +4,7 @@
       <th *ngFor="let item of listaDeElementos[0] | keyvalue">
         {{ item.key }}
       </th>
-      <th *ngIf="habilitarDetalle">Accion</th>
+      <th *ngIf="listaDeElementos.length > 0 && habilitarDetalle">Accion</th>
     </tr>
   </thead>
   <tbody>
@@ -16,7 +16,7 @@
         <input
           type="button"
           [ngClass]="'btn btn-outline-success'"
-          value="detalle"
+          [value]="nombreDetalle !== undefined ? nombreDetalle : 'Detalle'"
           (click)="seleccionarItem(elemento)"
         />
       </td>

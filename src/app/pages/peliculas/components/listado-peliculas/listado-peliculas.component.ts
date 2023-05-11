@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import {
-  Pelicula,
-  listadoDePeliculas,
-} from '../../../../../app/models/pelicula.model';
+import { Pelicula } from '../../../../../app/models/pelicula.model';
+import { PeliculasService } from 'src/app/services/peliculas.service';
 
 @Component({
   selector: 'app-listado-peliculas',
@@ -12,11 +10,11 @@ import {
 export class ListadoPeliculasComponent {
   protected listadoPeliculas: Array<Pelicula>;
   public itemSeleccionado: any;
-  constructor() {
-    this.listadoPeliculas = listadoDePeliculas;
+  constructor(private readonly peliculaService: PeliculasService) {
+    this.listadoPeliculas = this.peliculaService.getPeliculas();
   }
 
   public handlerDetalleItem($event: Event) {
-    this.itemSeleccionado = $event;
+    console.log($event);
   }
 }

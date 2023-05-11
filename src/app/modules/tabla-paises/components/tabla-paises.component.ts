@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { map } from 'rxjs';
+import { PaisService } from 'src/app/services/pais.service';
 
 @Component({
   selector: 'app-tabla-paises',
@@ -13,33 +12,13 @@ export class TablaPaisesComponent {
   @Output() public todosLosPaises: EventEmitter<any>;
   @Input() public activarSeleccion: boolean;
 
-  constructor(private readonly httpClient: HttpClient) {
+  constructor(private readonly paisesService: PaisService) {
     this.paisSeleccionado = new EventEmitter();
     this.todosLosPaises = new EventEmitter();
-    this.getPaises().subscribe((p) => {
+    this.paisesService.getPaises().subscribe((p) => {
       this.listadoPaises = p;
       this.todosLosPaises.emit(p);
     });
-  }
-
-  private getPaises() {
-    return this.httpClient
-      .get('https://restcountries.com/v3.1/subregion/South America')
-      .pipe(
-        map((data: any) => {
-          return Array.from(data).map((p: any) => {
-            const pais = {
-              nombre: p.name.common,
-              bandera: p.flags.svg,
-              capital: p.capital.shift(),
-              // continente: p.continents.shift(),
-              // region: p.region,
-              // subRegion: p.subregion,
-            };
-            return pais;
-          });
-        })
-      );
   }
 
   public seleccionarPais(item: any) {

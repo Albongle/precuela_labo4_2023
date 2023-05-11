@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { listadoDePeliculas } from '../../models/pelicula.model';
+import { PeliculasService } from 'src/app/services/peliculas.service';
 
 @Component({
   selector: 'app-busqueda',
@@ -7,9 +7,14 @@ import { listadoDePeliculas } from '../../models/pelicula.model';
   styleUrls: ['./busqueda.component.scss'],
 })
 export class BusquedaComponent {
-  protected elementos: Array<any> = listadoDePeliculas;
+  protected elementos: Array<any>;
   public itemSeleccionado: any;
-
+  /**
+   *
+   */
+  constructor(private readonly peliculaService: PeliculasService) {
+    this.elementos = this.peliculaService.getPeliculas();
+  }
   public handlerDetalleItem($event: Event) {
     this.itemSeleccionado = $event;
   }

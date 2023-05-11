@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Actor } from 'src/app/models/actor.model';
+import { ActorService } from 'src/app/services/actor.service';
 
 @Component({
   selector: 'app-alta-actores',
@@ -6,20 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./alta-actores.component.scss'],
 })
 export class AltaActoresComponent {
+  @Output() public eventNuevoActor: EventEmitter<any>;
   public pais: any;
   public validar: string;
-  public actor: {
-    nombre?: string;
-    apellido?: string;
-    usuario?: string;
-    email?: string;
-    direccion?: string;
-    pais?: any;
-  };
+  protected actor: Actor;
 
-  constructor() {
+  constructor(private readonly actoresService: ActorService) {
     this.validar = 'invalid-feedback';
-    this.actor = {};
+    this.actor = new Actor();
+    this.eventNuevoActor = new EventEmitter();
   }
 
   public handlerPais($event: Event) {
@@ -27,7 +24,9 @@ export class AltaActoresComponent {
     this.actor.pais = this.pais;
   }
 
-  public cargar() {
-    console.log(this.actor);
+  public crearActor() {
+    this.actoresService.guardarActor(this.actor);
+    this.actoresService.getActores();
+    this.eventNuevoActor.emit(this.actor);
   }
 }

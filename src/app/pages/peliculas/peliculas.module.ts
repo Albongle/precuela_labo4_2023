@@ -5,6 +5,7 @@ import { PeliculasComponent } from './peliculas.component';
 import { AltaPeliculasComponent } from './components/alta-peliculas/alta-peliculas.component';
 import { ListadoPeliculasComponent } from './components/listado-peliculas/listado-peliculas.component';
 import { ListadoModule } from '../../../app/modules/listado/listado.module';
+import { ActoresModule } from '../actores/actores.module';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,6 @@ import { ListadoModule } from '../../../app/modules/listado/listado.module';
     AltaPeliculasComponent,
     ListadoPeliculasComponent,
   ],
-  imports: [CommonModule, PeliculasRoutingModule, ListadoModule],
+  imports: [CommonModule, PeliculasRoutingModule, ListadoModule, ActoresModule],
 })
 export class PeliculasModule {}

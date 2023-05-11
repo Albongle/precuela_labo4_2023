@@ -8,7 +8,7 @@
         *ngIf="habilitarDetalle"
         type="button"
         [ngClass]="'btn btn-outline-success'"
-        value="detalle"
+        [value]="nombreDetalle !== undefined ? nombreDetalle : 'Detalle'"
         (click)="seleccionarItem(elemento)"
       />
     </ul>
