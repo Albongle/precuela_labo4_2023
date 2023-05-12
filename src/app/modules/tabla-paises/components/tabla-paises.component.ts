@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Pais } from 'src/app/models/pais.model';
 import { PaisService } from 'src/app/services/pais.service';
 
 @Component({
@@ -17,11 +18,11 @@ export class TablaPaisesComponent {
     this.todosLosPaises = new EventEmitter();
     this.paisesService.getPaises().subscribe((p) => {
       this.listadoPaises = p;
-      this.todosLosPaises.emit(p);
+      this.todosLosPaises.emit(p as Pais);
     });
   }
 
-  public seleccionarPais(item: any) {
+  public seleccionarPais(item: Pais) {
     this.paisSeleccionado.emit(item);
   }
 }

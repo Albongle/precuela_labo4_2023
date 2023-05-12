@@ -91,4 +91,7 @@ export class PeliculasService {
   public getPeliculas() {
     return PeliculasService.listadoPeliculas;
   }
+  public guardarPelicula(pelicula: Pelicula) {
+    PeliculasService.listadoPeliculas.push(pelicula);
+  }
 }

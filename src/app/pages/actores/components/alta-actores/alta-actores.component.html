@@ -2,96 +2,145 @@
   <div class="row justify-content-evenly align-items-md-stretch">
     <div class="m-md-3 mt-1 col-md-4">
       <div class="h-100 p-5 text-bg-dark rounded-3">
-        <h4 class="mb-3">Billing address</h4>
-        <form class="needs-validation" novalidate>
+        <h4 class="text-center mb-3">Crear actor</h4>
+        <form [formGroup]="frmAltaActor" class="needs-validation" novalidate>
           <div class="row g-3 justify-content-evenly">
             <div class="col-sm-6">
-              <label for="firstName" class="form-label">First name</label>
+              <label for="nombre" class="form-label">Nombre</label>
               <input
                 type="text"
-                name="nombre"
+                formControlName="nombre"
                 class="form-control"
-                id="firstName"
-                placeholder=""
-                [(ngModel)]="actor.nombre"
-                required
+                id="nombre"
+                placeholder="Nombre"
               />
-              <div [ngClass]="validar">Valid first name is required.</div>
+              <div
+                [hidden]="
+                  frmAltaActor.controls['nombre'].pristine ||
+                  !frmAltaActor.controls['nombre'].errors?.['required']
+                "
+                class="alert alert-danger mt-1 p-1 text-center"
+              >
+                Nombre es requerido
+              </div>
             </div>
 
             <div class="col-sm-6">
-              <label for="lastName" class="form-label">Last name</label>
+              <label for="apellido" class="form-label">Apellido</label>
               <input
                 type="text"
                 name="apellido"
                 class="form-control"
-                id="lastName"
-                placeholder=""
-                [(ngModel)]="actor.apellido"
-                required
+                id="apellido"
+                placeholder="Apellido"
+                formControlName="apellido"
               />
+              <div
+                [hidden]="
+                frmAltaActor.controls['apellido'].pristine ||
+                !frmAltaActor.controls['apellido'].errors?.['required']
+              "
+                class="alert alert-danger mt-1 p-1 text-center"
+              >
+                Apellido es requerido
+              </div>
             </div>
 
             <div class="col-12">
-              <label for="username" class="form-label">Username</label>
+              <label for="usuario" class="form-label">Usuario</label>
               <div class="input-group has-validation">
                 <span class="input-group-text">@</span>
                 <input
                   type="text"
                   name="usuario"
                   class="form-control"
-                  id="username"
+                  id="usuario"
                   placeholder="Username"
-                  [(ngModel)]="actor.usuario"
-                  required
+                  formControlName="usuario"
                 />
+              </div>
+              <div
+                [hidden]="
+                frmAltaActor.controls['usuario'].pristine ||
+                !frmAltaActor.controls['usuario'].errors?.['required']
+              "
+                class="alert alert-danger mt-1 p-1 text-center"
+              >
+                Usuario es requerido
               </div>
             </div>
 
             <div class="col-12">
-              <label for="email" class="form-label"
-                >Email
-                <span class="text-body-secondary">(Optional)</span></label
-              >
+              <label for="email" class="form-label">Email</label>
               <input
                 name="email"
                 type="email"
                 class="form-control"
                 id="email"
                 placeholder="you@example.com"
-                [(ngModel)]="actor.email"
+                formControlName="email"
               />
+              <div
+                [hidden]="
+                  frmAltaActor.controls['email'].pristine ||
+                  !frmAltaActor.controls['email'].errors
+                "
+                class="alert alert-danger mt-1 p-1 text-center"
+              >
+                <div
+                  [hidden]=" !frmAltaActor.controls['email'].errors?.['required']"
+                >
+                  Email es requerido
+                </div>
+                <div
+                  [hidden]=" !frmAltaActor.controls['email'].errors?.['email']"
+                >
+                  Debe ser un email valido
+                </div>
+              </div>
             </div>
 
             <div class="col-12">
-              <label for="address" class="form-label">Address</label>
+              <label for="direccion" class="form-label">Direccion</label>
               <input
                 name="direccion"
                 type="text"
                 class="form-control"
-                id="address"
+                id="direccion"
                 placeholder="1234 Main St"
-                [(ngModel)]="actor.direccion"
-                required
+                formControlName="direccion"
               />
-            </div>
-
-            <div class="col-md-5">
-              <label for="country" class="form-label">Country</label>
-              <select class="form-select" id="country" required>
-                <option *ngIf="pais">
-                  {{ pais.nombre }}
-                </option>
-              </select>
+              <div
+                [hidden]="
+              frmAltaActor.controls['direccion'].pristine ||
+              !frmAltaActor.controls['direccion'].errors?.['required']
+            "
+                class="alert alert-danger mt-1 p-1 text-center"
+              >
+                Direccion es requerido
+              </div>
             </div>
 
             <div class="col-md-4">
-              <label for="state" class="form-label">State</label>
-              <select class="form-select" id="state" required>
-                <option *ngIf="pais">
-                  {{ pais.capital }}
-                </option>
-              </select>
+              <label for="pais" class="text-center form-label">Pais</label>
+              <div
+                *ngIf="pais"
+                id="pais"
+                class="form-control text-center alert alert-success p-1 mt-1"
+              >
+                {{ pais.nombre }}
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label for="ciudad" class="text-center form-label">Ciudad</label>
+              <div
+                *ngIf="pais"
+                id="ciudad"
+                class="form-control text-center alert alert-success p-1 mt-1"
+              >
+                {{ pais.capital }}
+              </div>
             </div>
           </div>
 
@@ -106,7 +155,7 @@
             type="button"
             (click)="crearActor()"
           >
-            Continue to checkout
+            Crear
           </button>
         </form>
       </div>

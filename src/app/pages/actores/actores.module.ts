@@ -5,7 +5,7 @@ import { ActoresComponent } from './actores.component';
 import { AltaActoresComponent } from './components/alta-actores/alta-actores.component';
 import { TablaPaisesModule } from '../../../app/modules/tabla-paises/tabla-paises.module';
 import { ListadoModule } from '../../../app/modules/listado/listado.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListadoActoresComponent } from './components/listado-actores/listado-actores.component';
 
 @NgModule({
@@ -20,6 +20,7 @@ import { ListadoActoresComponent } from './components/listado-actores/listado-ac
     TablaPaisesModule,
     ListadoModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [ListadoActoresComponent, AltaActoresComponent],
 })
