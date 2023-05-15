@@ -22,4 +22,8 @@ export class Actor {
     this.direccion = values.direccion;
     this.pais = values.pais;
   }
+
+  public toString(): string {
+    return `${this.apellido}, ${this.nombre}`;
+  }
 }

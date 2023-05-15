@@ -3,10 +3,15 @@ import { CommonModule } from '@angular/common';
 import { ListadoComponent } from './listado.component';
 import { TablaComponent } from './components/tabla/tabla.component';
 import { ListaComponent } from './components/lista/lista.component';
-import { PaisPipe } from './pipes/pais.pipe';
+import { ToStringPipe } from './pipes/toString.pipe';
 
 @NgModule({
-  declarations: [ListadoComponent, TablaComponent, ListaComponent, PaisPipe],
+  declarations: [
+    ListadoComponent,
+    TablaComponent,
+    ListaComponent,
+    ToStringPipe,
+  ],
   imports: [CommonModule],
   exports: [ListadoComponent],
 })
