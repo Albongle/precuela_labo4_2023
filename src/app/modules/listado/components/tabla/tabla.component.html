@@ -10,7 +10,11 @@
   <tbody>
     <tr *ngFor="let elemento of listaDeElementos">
       <td *ngFor="let item of elemento | keyvalue">
-        {{ item.value }}
+        <ng-template
+          *ngIf="item.key !== 'pais'; then thenBlock; else elseBlock"
+        ></ng-template>
+        <ng-template #thenBlock>{{ item.value }}</ng-template>
+        <ng-template #elseBlock>{{ item.value | Pais }} </ng-template>
       </td>
       <td *ngIf="habilitarDetalle">
         <input

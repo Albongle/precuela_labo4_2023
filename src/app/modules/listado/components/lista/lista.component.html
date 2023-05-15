@@ -2,8 +2,13 @@
   <li [ngClass]="'mt-5'" *ngFor="let elemento of listaDeElementos">
     <ul>
       <li type="circle" *ngFor="let item of elemento | keyvalue">
-        {{ item.key }}: {{ item.value }}
+        <ng-template
+          *ngIf="item.key !== 'pais'; then thenBlock; else elseBlock"
+        ></ng-template>
+        <ng-template #thenBlock>{{ item.value }}</ng-template>
+        <ng-template #elseBlock>{{ item.value | Pais }} </ng-template>
       </li>
+
       <input
         *ngIf="habilitarDetalle"
         type="button"

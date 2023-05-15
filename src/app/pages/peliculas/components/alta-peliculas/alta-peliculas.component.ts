@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Actor } from 'src/app/models/actor.model';
+import { Pelicula } from 'src/app/models/pelicula.model';
 import { ActorService } from 'src/app/services/actor.service';
 import { AlertService } from 'src/app/services/alert.service';
+import { PeliculasService } from 'src/app/services/peliculas.service';
 
 @Component({
   selector: 'app-alta-peliculas',
@@ -16,14 +18,15 @@ export class AltaPeliculasComponent {
   constructor(
     protected readonly actorService: ActorService,
     private readonly formBuilder: FormBuilder,
-    private readonly alertService: AlertService
+    private readonly alertService: AlertService,
+    private readonly peliculaService: PeliculasService
   ) {
     this.formAltaPelicula = this.formBuilder.group({
       nombre: ['', Validators.required],
       tipo: ['', Validators.required],
-      fechaEstreno: ['', Validators.required],
-      cantPublico: ['', Validators.required],
-      imagen: ['', Validators.required],
+      fechaDeEstreno: ['', Validators.required],
+      cantidadDePulibico: ['', Validators.required],
+      fotoDeLaPelicula: ['', Validators.required],
       actor: ['', Validators.required],
     });
   }
@@ -38,6 +41,14 @@ export class AltaPeliculasComponent {
 
   protected crearPelicula() {
     if (this.formAltaPelicula.valid) {
+      const id = this.peliculaService.getUltimoId()! + 1;
+      const actor = this.actor;
+      const pelicula = new Pelicula({
+        ...this.formAltaPelicula.value,
+        id,
+        actor,
+      });
+      this.peliculaService.guardarPelicula(pelicula);
       this.alertService.showAlert({
         icon: 'success',
         message: 'Pelicula creada con exito',
