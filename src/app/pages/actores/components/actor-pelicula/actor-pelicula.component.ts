@@ -12,6 +12,7 @@ import { PeliculasService } from 'src/app/services/peliculas.service';
 export class ActorPeliculaComponent {
   protected listadoDeActores: Actor[];
   protected peliculasDelActor: Pelicula[];
+  public actor: Actor;
   constructor(
     private readonly actorService: ActorService,
     private readonly peliculasService: PeliculasService
@@ -21,9 +22,9 @@ export class ActorPeliculaComponent {
   }
 
   protected handlerActor($event: Event) {
-    const actor = $event as Actor;
+    this.actor = $event as Actor;
     this.peliculasDelActor = this.peliculasService
       .getPeliculas()
-      .filter((p) => p.actor?.email === actor.email);
+      .filter((p) => p.actor?.email === this.actor.email);
   }
 }

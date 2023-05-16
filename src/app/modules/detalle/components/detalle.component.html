@@ -1,5 +1,15 @@
 <ul *ngIf="itemADetallar">
   <li *ngFor="let item of itemADetallar | keyvalue">
-    {{ item.key }}: {{ item.value }}
+    <ng-template
+      *ngIf="
+        item.key !== 'pais' && item.key !== 'actor';
+        then thenBlock;
+        else elseBlock
+      "
+    ></ng-template>
+    <ng-template #thenBlock>{{ item.key }}: {{ item.value }}</ng-template>
+    <ng-template #elseBlock
+      >{{ item.key }}: {{ item.value | ToString }}
+    </ng-template>
   </li>
 </ul>

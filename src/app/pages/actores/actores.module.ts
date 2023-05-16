@@ -8,6 +8,7 @@ import { ListadoModule } from '../../../app/modules/listado/listado.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListadoActoresComponent } from './components/listado-actores/listado-actores.component';
 import { ActorPeliculaComponent } from './components/actor-pelicula/actor-pelicula.component';
+import { DetalleModule } from 'src/app/modules/detalle/detalle.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ActorPeliculaComponent } from './components/actor-pelicula/actor-pelicu
     ListadoModule,
     FormsModule,
     ReactiveFormsModule,
+    DetalleModule,
   ],
   exports: [ListadoActoresComponent, AltaActoresComponent],
 })
